@@ -24,9 +24,9 @@
 | text         | text       | null: false                     |
 | category_id  | integer    | null: false                     |
 | status_id    | integer    | null: false                     |
-| s_charges_id | integer    | null: false                     |
-| s_area_id    | integer    | null: false                     |
-| s_day_id     | integer    | null: false                     |
+| charges_id   | integer    | null: false                     |
+| area_id      | integer    | null: false                     |
+| day_id       | integer    | null: false                     |
 | price        | integer    | null: false                     |
 | user         | references | null: false , foreign_key: true |
 
@@ -49,7 +49,7 @@
 | Column     | Type       | Option                          |
 | ---------- | ---------- | ------------------------------- |
 | add_num    | string     | null: false                     |
-| region_id  | integer    | null: false                     |
+| area_id    | integer    | null: false                     |
 | city       | string     | null: false                     |
 | add_line   | string     | null: false                     |
 | add_build  | string     |                                 |
