@@ -5,13 +5,13 @@
 | Column             | Type   | Option                    |
 | ------------------ | ------ | ------------------------- |
 | nickname           | string	| null: false               |
-| emaie              | string | null: false, unique: true |
+| email              | string | null: false, unique: true |
 | encrypted_password | string	| null: false               |
 | last_name          | string | null: false               |
 | first_name         | string	| null: false               |
 | last_name_f        | string | null: false               |
 | first_name_f       | string	| null: false               |
-| birthday           |date    | null: false               |
+| birthday           | date   | null: false               |
 
 ### Association
 - has_many :items
@@ -43,7 +43,7 @@
 ### Association
 - belongs_to :user
 - belongs_to :item
-- has_one :Addresses
+- has_one :address
 
 ## Addresses テーブル
 | Column     | Type       | Option                          |
