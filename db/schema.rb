@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2021_02_18_053806) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "add_num", null: false
-    t.integer "area", null: false
+    t.integer "area_id", null: false
     t.string "city", null: false
     t.string "add_line", null: false
     t.string "add_build"
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2021_02_18_053806) do
     t.bigint "management_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["area"], name: "index_addresses_on_area"
+    t.index ["area_id"], name: "index_addresses_on_area_id"
     t.index ["management_id"], name: "index_addresses_on_management_id"
   end
 

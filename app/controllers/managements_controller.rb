@@ -1,5 +1,29 @@
 class ManagementsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :set_item
+
+
   def index
+    @management_address = ManagementAddress.new
+  end
+
+
+  def create
+    @management_address = ManagementAddress.new(management_params)
+    if @management_address.valid?
+      @management_address.save
+      redirect_to root_path
+    else
+      render :index
+    end
+  end
+
+  private
+  def management_params
+    params.require(:management_address).permit(:add_num,:area_id,:city,:add_line,:add_build,:tel_num).merge(user_id: current_user.id,item_id: params[:item_id])
+  end
+
+  def set_item
     @item = Item.find(params[:item_id])
   end
 end

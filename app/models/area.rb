@@ -52,5 +52,5 @@ class Area < ActiveHash::Base
 
   include ActiveHash::Associations
   has_many :items
-  has_many :managements
+  has_many :addresses
 end
