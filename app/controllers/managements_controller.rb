@@ -3,11 +3,9 @@ class ManagementsController < ApplicationController
   before_action :set_item
   before_action :move_to_index
 
-
   def index
     @management_address = ManagementAddress.new
   end
-
 
   def create
     @management_address = ManagementAddress.new(management_params)
@@ -21,8 +19,11 @@ class ManagementsController < ApplicationController
   end
 
   private
+
   def management_params
-    params.require(:management_address).permit(:add_num,:area_id,:city,:add_line,:add_build,:tel_num).merge(user_id: current_user.id,item_id: params[:item_id],token: params[:token])
+    params.require(:management_address).permit(:add_num, :area_id, :city, :add_line, :add_build, :tel_num).merge(
+      user_id: current_user.id, item_id: params[:item_id], token: params[:token]
+    )
   end
 
   def set_item
@@ -35,7 +36,7 @@ class ManagementsController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: @item.price,
       card: management_params[:token],

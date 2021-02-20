@@ -3,5 +3,5 @@ class Address < ApplicationRecord
   belongs_to :management
   belongs_to :area
 
-  validates :management_id,presence: true
+  validates :management_id, presence: true
 end
