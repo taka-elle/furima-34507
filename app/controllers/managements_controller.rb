@@ -31,8 +31,7 @@ class ManagementsController < ApplicationController
   end
 
   def move_to_index
-    redirect_to root_path if current_user.id == @item.user_id
-    redirect_to root_path unless @item.management.blank?
+    redirect_to root_path if current_user.id == @item.user_id || !@item.management.blank?
   end
 
   def pay_item
