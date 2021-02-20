@@ -6,5 +6,6 @@ FactoryBot.define do
       add_line              { '000-0' }
       add_build             { 'test' }
       tel_num               { '00000000000' }
+      token                 {"tok_abcdefghijk00000000000000000"}
   end
 end

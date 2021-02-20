@@ -68,6 +68,11 @@ RSpec.describe ManagementAddress, type: :model do
         @management_address.valid?
         expect(@management_address.errors.full_messages).to include "Tel num is invalid"
       end
+      it 'tokenが空の場合保存されない' do
+        @management_address.token = nil
+        @management_address.valid?
+        expect(@management_address.errors.full_messages).to include "Token can't be blank"
+      end
     end
   end
 end
