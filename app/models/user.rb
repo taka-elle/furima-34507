@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :items
+  has_many :managements
 
   VALID_NAME_REGEX = /\A[ぁ-んァ-ン一-龥々]+\z/
   VALID_NAME_F_REGEX = /\A[ァ-ヶー－]+\z/
