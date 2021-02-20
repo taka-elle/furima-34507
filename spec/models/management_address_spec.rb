@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe ManagementAddress, type: :model do
   before do
     item = FactoryBot.create(:item)
-    @management_address = FactoryBot.build(:management_address, user_id: item.user_id, item_id: item.id)
+    user = FactoryBot.create(:user)
+    @management_address = FactoryBot.build(:management_address, user_id: user.id, item_id: item.id)
     sleep(0.1)
   end
 
@@ -26,8 +27,7 @@ RSpec.describe ManagementAddress, type: :model do
       it 'add_numが空の場合保存されない' do
         @management_address.add_num = ''
         @management_address.valid?
-        expect(@management_address.errors.full_messages).to include "Add num can't be blank",
-                                                                    'Add num is invalid. Include hyphen(-)'
+        expect(@management_address.errors.full_messages).to include "Add num can't be blank"
       end
       it 'add_numに「-」ハイフンがない場合保存されない' do
         @management_address.add_num = '0000000'
