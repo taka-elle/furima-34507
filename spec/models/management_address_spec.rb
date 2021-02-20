@@ -59,6 +59,16 @@ RSpec.describe ManagementAddress, type: :model do
         @management_address.valid?
         expect(@management_address.errors.full_messages).to include "Tel num can't be blank"
       end
+      it 'user_idがからの場合保存されない' do
+        @management_address.user_id = ''
+        @management_address.valid?
+        expect(@management_address.errors.full_messages).to include "User can't be blank"
+      end
+      it 'item_idがからの場合保存されない' do
+        @management_address.item_id = ''
+        @management_address.valid?
+        expect(@management_address.errors.full_messages).to include "Item can't be blank"
+      end
       it 'tel_numが11文字以上の場合保存されない' do
         @management_address.tel_num = '123456789012'
         @management_address.valid?
@@ -68,6 +78,11 @@ RSpec.describe ManagementAddress, type: :model do
         @management_address.tel_num = 'abcdefg'
         @management_address.valid?
         expect(@management_address.errors.full_messages).to include 'Tel num is invalid'
+      end
+      it 'tel_numが英数字混合では保存されない'do
+        @management_address.tel_num = 'abcde12345'
+        @management_address.valid?
+        expect(@management_address.errors.full_messages).to include "Tel num is invalid"
       end
       it 'tokenが空の場合保存されない' do
         @management_address.token = nil
