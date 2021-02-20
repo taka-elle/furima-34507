@@ -1,7 +1,7 @@
 class ManagementAddress
   include ActiveModel::Model
   attr_accessor :add_num,:area_id,:city,:add_line,:add_build,
-                :tel_num,:item_id,:user_id,:management_id
+                :tel_num,:item_id,:user_id,:management_id,:token
 
   with_options presence: true do
     validates :user_id
@@ -11,6 +11,7 @@ class ManagementAddress
     validates :city
     validates :add_line
     validates :tel_num, length:{maximum: 11},format: {with: /\A[0-9]+\z/}
+    validates :token
   end
 
   def save
