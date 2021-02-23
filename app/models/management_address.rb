@@ -6,11 +6,11 @@ class ManagementAddress
   with_options presence: true do
     validates :user_id
     validates :item_id
-    validates :add_num, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'is invalid. Include hyphen(-)' }
-    validates :area_id, numericality: { other_than: 1 }
+    validates :add_num, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'はハイフン(-)を入れてください' }
+    validates :area_id, numericality: { other_than: 1 , message: 'を選択してください'}
     validates :city
     validates :add_line
-    validates :tel_num, length: { maximum: 11 }, format: { with: /\A[0-9]+\z/ }
+    validates :tel_num, length: { maximum: 11 }, format: { with: /\A[0-9]+\z/ , message: '半角英数字で入力してください'}
     validates :token
   end
 
