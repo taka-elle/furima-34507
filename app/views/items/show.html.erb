@@ -6,7 +6,7 @@
       <%= @item.name %>
     </h2>
     <div class="item-img-content">
-      <%= @item.images.each do |image| %>
+      <% @item.images.each do |image| %>
         <%= image_tag image ,class:"item-box-img" %>
       <% end %>
       <% unless @item.management.blank? %>
@@ -92,12 +92,12 @@
     </form>
   </div>
   <div class="links">
-    <a href="#" class="change-item-btn">
-      ＜ 前の商品
-    </a>
-    <a href="#" class="change-item-btn">
-      後ろの商品 ＞
-    </a>
+    <% if @item.next.present? %>
+      <%= link_to "＜前の商品", item_path(@item.next), class: "change-item-btn"%>
+    <% end %>
+    <% if @item.previous.present? %>
+      <%= link_to "次の商品＞", item_path(@item.previous), class: "change-item-btn"%>
+    <% end %>
   </div>
   <a href="#" class="another-item"><%= @item.category.name %>をもっと見る</a>
 </div>
